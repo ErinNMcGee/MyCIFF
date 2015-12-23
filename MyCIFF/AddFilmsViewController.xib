@@ -10,6 +10,7 @@
                 <outlet property="colorPicker" destination="NVk-KS-Dbt" id="4ro-Xv-Tmh"/>
                 <outlet property="datePicker" destination="pJo-0c-aDs" id="YvY-Ha-jix"/>
                 <outlet property="dateTimeLabel" destination="M3N-Re-3RN" id="XQy-71-cL7"/>
+                <outlet property="filmLength" destination="wKQ-kN-4Lo" id="k8g-hU-Ih8"/>
                 <outlet property="filmTitle" destination="dce-nw-BMP" id="ExD-ha-erh"/>
                 <outlet property="theaterColor" destination="XVO-kt-bRx" id="nGf-57-LU1"/>
                 <outlet property="view" destination="iN0-l3-epB" id="nfn-ei-VIK"/>
@@ -52,7 +53,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Theater Color:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IDe-Es-ZMb">
-                    <rect key="frame" x="32" y="199" width="110" height="21"/>
+                    <rect key="frame" x="32" y="217" width="110" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -67,7 +68,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Blue" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XVO-kt-bRx">
-                    <rect key="frame" x="161" y="199" width="141" height="21"/>
+                    <rect key="frame" x="161" y="217" width="141" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
@@ -84,6 +85,16 @@
                 <pickerView tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NVk-KS-Dbt">
                     <rect key="frame" x="28" y="307" width="325" height="162"/>
                 </pickerView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Film Length:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xeO-Iv-8Rf">
+                    <rect key="frame" x="32" y="182" width="94" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wKQ-kN-4Lo">
+                    <rect key="frame" x="139" y="178" width="67" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>

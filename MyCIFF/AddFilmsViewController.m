@@ -8,6 +8,7 @@
 
 #import "AddFilmsViewController.h"
 #import "AllFilmsViewController.h"
+#import <EventKit/EventKit.h>
 
 @interface AddFilmsViewController ()
 
@@ -77,7 +78,9 @@
     NSString *alertString = @"Data Insertion failed";
     if (self.filmTitle.text.length>0)
     {
-        NSString *link =[@"http://www.clevelandfilm.org/films/2015/" stringByAppendingString:self.filmTitle.text];
+        EKEventStore *store = [[EKEventStore alloc] init];
+        
+        NSString *link =[@"http://www.clevelandfilm.org/films/2016/" stringByAppendingString:self.filmTitle.text];
         
         link = [link stringByReplacingOccurrencesOfString:@" "
                                                withString:@"-"];
@@ -130,8 +133,19 @@
         film[@"link"] = link;
         film[@"filmDate"] = self.datePicker.date;
         film[@"theater"] = self.theaterColor.text;
+        film[@"filmLength"] = self.filmLength.text;
         [film saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (succeeded) {
+                [store requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
+                    if (!granted) { return; }
+                    EKEvent *event = [EKEvent eventWithEventStore:store];
+                    event.title = [filmTitle stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];;
+                    event.startDate = self.datePicker.date;
+                    event.endDate = [self.datePicker.date dateByAddingTimeInterval: (self.filmLength.text.intValue *60)];
+                    [event setCalendar:[store defaultCalendarForNewEvents]];
+                    NSError *err = nil;
+                    [store saveEvent:event span:EKSpanThisEvent commit:YES error:&err];
+                }];
                 
             } else {
                 UIAlertView *alert = [[UIAlertView alloc]initWithTitle:

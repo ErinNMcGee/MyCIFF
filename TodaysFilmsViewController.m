@@ -149,15 +149,18 @@
     }];
     
 }
+
 - (IBAction)allFilms:(id)sender {
         AllFilmsViewController *allView = [[AllFilmsViewController alloc] initWithNibName:@"AllFilmsViewController" bundle:nil];
     [self presentViewController:allView animated:NO completion:nil];
 }
 
-- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
-{
-    [self viewWillAppear:YES];
+- (IBAction)openCalendar:(id)sender {
+    TodaysCalendarViewController *calendarView = [[TodaysCalendarViewController alloc] initWithNibName:@"TodaysCalendarViewController" bundle:nil];
+    [self presentViewController:calendarView animated:NO completion:nil];
 }
+
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {

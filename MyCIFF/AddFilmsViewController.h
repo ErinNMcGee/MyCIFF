@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *filmTitle;
 @property (weak, nonatomic) IBOutlet UILabel *theaterColor;
 @property (weak, nonatomic) IBOutlet UIPickerView *colorPicker;
+@property (nonatomic, retain) IBOutlet UITextField *filmLength;
 
 - (IBAction)datePickerDateChanged:(id)sender;
 

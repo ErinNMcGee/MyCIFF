@@ -8,7 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import "MGCDayPlannerEKViewController.h"
 
-@interface TodaysCalendarViewController : UIViewController
+@interface TodaysCalendarViewController : MGCDayPlannerEKViewController
+
+@property (nonatomic) UIPopoverController *calendarPopover;
+
+@property (nonatomic, strong) NSCalendar *calendar;
+@property (nonatomic, strong) EKEventStore *eventStore;
 
 @end

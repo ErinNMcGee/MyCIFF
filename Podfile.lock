@@ -1,0 +1,16 @@
+PODS:
+  - CalendarLib (1.0):
+    - OrderedDictionary (~> 1.2)
+    - OSCache (~> 1.2)
+  - OrderedDictionary (1.2)
+  - OSCache (1.2.1)
+
+DEPENDENCIES:
+  - CalendarLib (~> 1.0)
+
+SPEC CHECKSUMS:
+  CalendarLib: 09364238c6259a17a719f2f8b05a79bf379ecb8d
+  OrderedDictionary: 9cc5d69c5c5314ad696ed1839190724e83d534c7
+  OSCache: 826996b68e8542a8a3d8af1ab0a0fc3070d8f357
+
+COCOAPODS: 0.39.0

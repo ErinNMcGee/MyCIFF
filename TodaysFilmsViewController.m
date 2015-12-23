@@ -243,7 +243,7 @@
     
     if (film){
         filmEditView.film = film;
-        filmEditView.controller=@"All";
+        filmEditView.controller=@"Today";
     }
     
     [self presentViewController:filmEditView animated:NO completion:nil];
@@ -270,6 +270,12 @@
         case 1: //"Yes" pressed
         {
             PFObject *film = [self.filmDictionary objectForKey: self.objectId];
+            EKEventStore *store = [[EKEventStore alloc] init];
+            EKEvent* eventToRemove = [store eventWithIdentifier:film[@"eventID"]];
+            if (eventToRemove != nil) {
+                NSError* error = nil;
+                [store removeEvent:eventToRemove span:EKSpanThisEvent error:&error];
+            }
             [film deleteInBackground];
             [self loadData];
             break;

@@ -51,6 +51,7 @@
     self.introLabel.text=[self.film objectForKey: @"intro"];
     self.filmComments.text=[self.film objectForKey: @"comments"];
     self.theaterColor.text=[self.film objectForKey:@"theater"];
+    self.filmLength.text=[self.film objectForKey:@"filmLength"];
 }
 
 -(void) loadData
@@ -109,8 +110,13 @@
 }
 - (IBAction)cancelAddFilm:(id)sender {
     
-    AllFilmsViewController *allView = [[AllFilmsViewController alloc] initWithNibName:@"AllFilmsViewController" bundle:nil];
-    [self presentViewController:allView animated:NO completion:nil];
+    if([self.controller isEqualToString:@"All"]){
+        AllFilmsViewController *allView = [[AllFilmsViewController alloc] initWithNibName:@"AllFilmsViewController" bundle:nil];
+        [self presentViewController:allView animated:NO completion:nil];
+    }else if([self.controller isEqualToString:@"Today"]){
+        TodaysFilmsViewController *allView = [[TodaysFilmsViewController alloc] initWithNibName:@"TodaysFilmsViewController" bundle:nil];
+        [self presentViewController:allView animated:NO completion:nil];
+    }
 }
 
 - (IBAction)editFilm:(id)sender {
@@ -178,6 +184,15 @@
         self.film[@"intro"] = self.introLabel.text;
         self.film[@"comments"] = self.filmComments.text;
         self.film[@"theater"] = self.theaterColor.text;
+        self.film[@"filmLength"] = self.filmLength.text;
+        EKEventStore *store = [[EKEventStore alloc] init];
+        EKEvent* event = [store eventWithIdentifier:self.film[@"eventID"]];
+        event.title = [filmTitle stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];;
+        event.startDate = self.datePicker.date;
+        event.endDate = [self.datePicker.date dateByAddingTimeInterval: (self.filmLength.text.intValue *60)];
+        [event setCalendar:[store defaultCalendarForNewEvents]];
+        NSError *err = nil;
+        [store saveEvent:event span:EKSpanThisEvent commit:YES error:&err];
         [self.film saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (succeeded) {
             } else {

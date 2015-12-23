@@ -47,14 +47,13 @@
     self.dayPlannerView.backgroundView = [UIView new];
     self.dayPlannerView.backgroundView.backgroundColor = [UIColor whiteColor];
     self.dayPlannerView.dateFormat = @"eeeee\nd MMM";
-    self.dayPlannerView.dayHeaderHeight = 50;
+    self.dayPlannerView.dayHeaderHeight = 75;
+    self.view=self.dayPlannerView;
     
-    UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [cancelButton addTarget:self action:@selector(handleExit) forControlEvents:UIControlEventTouchUpInside];
-    [cancelButton setFrame:CGRectMake(0, 20, 100, 32)];
-    [cancelButton setTitle:@"<" forState:UIControlStateNormal];
+    UISwipeGestureRecognizer *gestureRec = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleExit)];
+    gestureRec.direction=UISwipeGestureRecognizerDirectionDown;
     
-    [self.dayPlannerView addSubview:cancelButton];
+    [self.dayPlannerView addGestureRecognizer:gestureRec];
 }
 
 - (void)viewWillAppear:(BOOL)animated

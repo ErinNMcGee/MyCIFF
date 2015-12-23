@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *filmTitle;
 @property (weak, nonatomic) IBOutlet UILabel *theaterColor;
 @property (weak, nonatomic) IBOutlet UIPickerView *colorPicker;
+@property (weak, nonatomic) IBOutlet UITextField *filmLength;
 
 @property (strong, nonatomic) PFObject *film;
 @property (strong, nonatomic) NSString *controller;

@@ -11,6 +11,7 @@
                 <outlet property="datePicker" destination="61V-fz-1VB" id="6Ss-qe-83y"/>
                 <outlet property="dateTimeLabel" destination="63I-7E-jAO" id="6RL-EW-k63"/>
                 <outlet property="filmComments" destination="Kcx-im-2uY" id="OY1-wa-b9p"/>
+                <outlet property="filmLength" destination="1xp-62-dsF" id="rTx-41-aIO"/>
                 <outlet property="filmTitle" destination="8DK-vX-4mp" id="0lg-47-uha"/>
                 <outlet property="introLabel" destination="8md-d0-MsS" id="EPM-hi-uwa"/>
                 <outlet property="introPicker" destination="MfD-SG-rQV" id="nhJ-iC-teN"/>
@@ -76,7 +77,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Comments:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cif-xf-Win">
-                    <rect key="frame" x="31" y="201" width="89" height="21"/>
+                    <rect key="frame" x="31" y="225" width="89" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
@@ -105,7 +106,7 @@
                     <rect key="frame" x="25" y="359" width="325" height="162"/>
                 </pickerView>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kcx-im-2uY">
-                    <rect key="frame" x="135" y="198" width="176" height="115"/>
+                    <rect key="frame" x="141" y="233" width="154" height="90"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -113,6 +114,16 @@
                 <pickerView tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7lr-5x-8aY">
                     <rect key="frame" x="25" y="359" width="325" height="162"/>
                 </pickerView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Film Length:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BN3-3v-iel">
+                    <rect key="frame" x="31" y="199" width="94" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1xp-62-dsF">
+                    <rect key="frame" x="151" y="195" width="67" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>

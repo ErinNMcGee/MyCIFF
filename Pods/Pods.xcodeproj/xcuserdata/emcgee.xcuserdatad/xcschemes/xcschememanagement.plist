@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>CalendarLib-CalendarLib.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>CalendarLib.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>OSCache.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>OrderedDictionary.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>3721E480D9E7037F39506F28396156AA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4F9D4B4707AE617A54DA96708FA81342</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>68E3C98633392981825549AA072EECFA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>ADE19060D56FBE4351A7B1C42864BEB8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DE3D6D0EB9E85275B6B1610D9C59CE70</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

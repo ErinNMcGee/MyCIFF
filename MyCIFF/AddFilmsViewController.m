@@ -134,17 +134,19 @@
         film[@"filmDate"] = self.datePicker.date;
         film[@"theater"] = self.theaterColor.text;
         film[@"filmLength"] = self.filmLength.text;
+        EKEvent *event = [EKEvent eventWithEventStore:store];
+        event.title = [filmTitle stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];;
+        event.startDate = self.datePicker.date;
+        event.endDate = [self.datePicker.date dateByAddingTimeInterval: (self.filmLength.text.intValue *60)];
+        [event setCalendar:[store defaultCalendarForNewEvents]];
+        NSError *err = nil;
+        [store saveEvent:event span:EKSpanThisEvent commit:YES error:&err];
+        NSString* str = [[NSString alloc] initWithFormat:@"%@", event.eventIdentifier];
+        film[@"eventID"] = str;
         [film saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (succeeded) {
                 [store requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
                     if (!granted) { return; }
-                    EKEvent *event = [EKEvent eventWithEventStore:store];
-                    event.title = [filmTitle stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];;
-                    event.startDate = self.datePicker.date;
-                    event.endDate = [self.datePicker.date dateByAddingTimeInterval: (self.filmLength.text.intValue *60)];
-                    [event setCalendar:[store defaultCalendarForNewEvents]];
-                    NSError *err = nil;
-                    [store saveEvent:event span:EKSpanThisEvent commit:YES error:&err];
                 }];
                 
             } else {

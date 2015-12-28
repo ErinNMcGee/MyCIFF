@@ -7,7 +7,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TodaysFilmsViewController">
             <connections>
-                <outlet property="introCountText" destination="rYB-Er-dwt" id="m99-M3-F2g"/>
                 <outlet property="todaysFilmsList" destination="GLd-wl-aFi" id="Vg5-Ik-UUh"/>
                 <outlet property="totalFilmCount" destination="cdZ-32-LIq" id="W47-QY-BNf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -19,7 +18,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="GLd-wl-aFi">
-                    <rect key="frame" x="32" y="66" width="306" height="226"/>
+                    <rect key="frame" x="32" y="66" width="306" height="460"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <color key="separatorColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
@@ -50,28 +49,6 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Who's Introed The Most?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KX1-iZ-3L1">
-                    <rect key="frame" x="88" y="320" width="194" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rYB-Er-dwt">
-                    <rect key="frame" x="55" y="360" width="240" height="128"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                </textView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mZy-I4-rxc">
-                    <rect key="frame" x="312" y="24" width="34" height="26"/>
-                    <accessibility key="accessibilityConfiguration">
-                        <accessibilityTraits key="traits" button="YES" image="YES"/>
-                    </accessibility>
-                    <state key="normal" image="Icon-60.png"/>
-                    <connections>
-                        <action selector="openCalendar:" destination="-1" eventType="touchUpInside" id="T4q-mF-OXk"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -79,7 +56,6 @@
         </view>
     </objects>
     <resources>
-        <image name="Icon-60.png" width="60" height="60"/>
         <image name="film.png" width="32" height="32"/>
     </resources>
 </document>

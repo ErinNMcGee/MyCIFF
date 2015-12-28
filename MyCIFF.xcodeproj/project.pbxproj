@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		C60BC5001C2AED4600FE44B2 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C60BC4FF1C2AED4600FE44B2 /* Social.framework */; };
 		C60BC5021C2AED4E00FE44B2 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C60BC5011C2AED4E00FE44B2 /* Accounts.framework */; };
-		C60F1FA51C2882F50022C6F3 /* calendar-512-000000.png in Resources */ = {isa = PBXBuildFile; fileRef = C60F1FA41C2882F50022C6F3 /* calendar-512-000000.png */; };
-		C60F1FA71C28875B0022C6F3 /* Icon-60.png in Resources */ = {isa = PBXBuildFile; fileRef = C60F1FA61C28875B0022C6F3 /* Icon-60.png */; };
 		C60F1FD51C2898B70022C6F3 /* TodaysCalendarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C60F1FD41C2898B70022C6F3 /* TodaysCalendarViewController.xib */; };
 		C60F1FDA1C2899E10022C6F3 /* TodaysCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C60F1FD91C2899E10022C6F3 /* TodaysCalendarViewController.m */; };
 		C60F1FE11C29C98E0022C6F3 /* EditFilmsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C60F1FDD1C29C98E0022C6F3 /* EditFilmsViewController.m */; };
@@ -38,7 +36,6 @@
 		C6B281C11A992A7A00D62BDD /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6B281B61A992A7A00D62BDD /* MobileCoreServices.framework */; };
 		C6B281C21A992A7A00D62BDD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6B281B71A992A7A00D62BDD /* QuartzCore.framework */; };
 		C6B281C31A992A7A00D62BDD /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6B281B81A992A7A00D62BDD /* Security.framework */; };
-		C6B281C41A992A7A00D62BDD /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6B281B91A992A7A00D62BDD /* StoreKit.framework */; };
 		C6B281C51A992A7A00D62BDD /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6B281BA1A992A7A00D62BDD /* SystemConfiguration.framework */; };
 		E0681B57AB9EAB226ABC1F88 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27C3CC81A8F9A549847D5C0C /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -59,8 +56,6 @@
 		3A842426E36D10337FD99A03 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C60BC4FF1C2AED4600FE44B2 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		C60BC5011C2AED4E00FE44B2 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
-		C60F1FA41C2882F50022C6F3 /* calendar-512-000000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar-512-000000.png"; sourceTree = "<group>"; };
-		C60F1FA61C28875B0022C6F3 /* Icon-60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60.png"; sourceTree = "<group>"; };
 		C60F1FD41C2898B70022C6F3 /* TodaysCalendarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TodaysCalendarViewController.xib; path = ../TodaysCalendarViewController.xib; sourceTree = "<group>"; };
 		C60F1FD71C28996E0022C6F3 /* TodaysCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TodaysCalendarViewController.h; path = ../TodaysCalendarViewController.h; sourceTree = "<group>"; };
 		C60F1FD91C2899E10022C6F3 /* TodaysCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TodaysCalendarViewController.m; path = ../TodaysCalendarViewController.m; sourceTree = "<group>"; };
@@ -98,7 +93,6 @@
 		C6B281B61A992A7A00D62BDD /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		C6B281B71A992A7A00D62BDD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C6B281B81A992A7A00D62BDD /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		C6B281B91A992A7A00D62BDD /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		C6B281BA1A992A7A00D62BDD /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -118,7 +112,6 @@
 				C6B281C11A992A7A00D62BDD /* MobileCoreServices.framework in Frameworks */,
 				C6B281C21A992A7A00D62BDD /* QuartzCore.framework in Frameworks */,
 				C6B281C31A992A7A00D62BDD /* Security.framework in Frameworks */,
-				C6B281C41A992A7A00D62BDD /* StoreKit.framework in Frameworks */,
 				C6B281C51A992A7A00D62BDD /* SystemConfiguration.framework in Frameworks */,
 				C6B281AE1A9929C500D62BDD /* Parse.framework in Frameworks */,
 				C6B281AD1A9929C500D62BDD /* Bolts.framework in Frameworks */,
@@ -136,6 +129,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C6A07C731C318D740029B572 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				C60F1FE31C29CE1F0022C6F3 /* clipperboard.png */,
+				C60F1FE41C29CE1F0022C6F3 /* film.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		C6B2816F1A99290E00D62BDD = {
 			isa = PBXGroup;
 			children = (
@@ -159,8 +161,6 @@
 		C6B2817A1A99290E00D62BDD /* MyCIFF */ = {
 			isa = PBXGroup;
 			children = (
-				C60F1FE31C29CE1F0022C6F3 /* clipperboard.png */,
-				C60F1FE41C29CE1F0022C6F3 /* film.png */,
 				C60F1FDD1C29C98E0022C6F3 /* EditFilmsViewController.m */,
 				C60F1FE71C29CEAF0022C6F3 /* EditFilmsViewController.xib */,
 				C60F1FE91C29CEC00022C6F3 /* AddFilmsViewController.xib */,
@@ -179,8 +179,7 @@
 				C6B2817F1A99290E00D62BDD /* AppDelegate.h */,
 				C6B281801A99290E00D62BDD /* AppDelegate.m */,
 				C6B281881A99290F00D62BDD /* Images.xcassets */,
-				C60F1FA61C28875B0022C6F3 /* Icon-60.png */,
-				C60F1FA41C2882F50022C6F3 /* calendar-512-000000.png */,
+				C6A07C731C318D740029B572 /* Images */,
 				C6B2817B1A99290E00D62BDD /* Supporting Files */,
 			);
 			path = MyCIFF;
@@ -226,7 +225,6 @@
 				C6B281B61A992A7A00D62BDD /* MobileCoreServices.framework */,
 				C6B281B71A992A7A00D62BDD /* QuartzCore.framework */,
 				C6B281B81A992A7A00D62BDD /* Security.framework */,
-				C6B281B91A992A7A00D62BDD /* StoreKit.framework */,
 				C6B281BA1A992A7A00D62BDD /* SystemConfiguration.framework */,
 				C6B281AB1A9929C500D62BDD /* Bolts.framework */,
 				C6B281AC1A9929C500D62BDD /* Parse.framework */,
@@ -291,11 +289,17 @@
 		C6B281701A99290E00D62BDD /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Erin McGee";
 				TargetAttributes = {
 					C6B281771A99290E00D62BDD = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = 7BKJYS6U5G;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+						};
 					};
 					C6B281901A99290F00D62BDD = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -328,13 +332,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C60F1FE61C29CE1F0022C6F3 /* film.png in Resources */,
-				C60F1FA71C28875B0022C6F3 /* Icon-60.png in Resources */,
 				C60F1FE51C29CE1F0022C6F3 /* clipperboard.png in Resources */,
 				C6B281A81A99293900D62BDD /* AllFilmsViewController.xib in Resources */,
 				C6B281A91A99293900D62BDD /* TodaysFilmsViewController.xib in Resources */,
 				C60F1FD51C2898B70022C6F3 /* TodaysCalendarViewController.xib in Resources */,
 				C60F1FE81C29CEAF0022C6F3 /* EditFilmsViewController.xib in Resources */,
-				C60F1FA51C2882F50022C6F3 /* calendar-512-000000.png in Resources */,
 				C60F1FEA1C29CEC00022C6F3 /* AddFilmsViewController.xib in Resources */,
 				C6B281891A99290F00D62BDD /* Images.xcassets in Resources */,
 			);
@@ -451,6 +453,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -514,15 +517,19 @@
 			baseConfigurationReference = 306204A85F3EE737F26E89CF /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = MyCIFF/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mcgeesoft.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -532,15 +539,19 @@
 			baseConfigurationReference = 3A842426E36D10337FD99A03 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = MyCIFF/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mcgeesoft.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -559,6 +570,7 @@
 				);
 				INFOPLIST_FILE = MyCIFFTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mcgeesoft.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyCIFF.app/MyCIFF";
 			};
@@ -574,6 +586,7 @@
 				);
 				INFOPLIST_FILE = MyCIFFTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mcgeesoft.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyCIFF.app/MyCIFF";
 			};

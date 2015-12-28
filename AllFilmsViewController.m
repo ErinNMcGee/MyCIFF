@@ -74,6 +74,12 @@
     }
     PFQuery *query = [PFQuery queryWithClassName:@"Film"];
     [query orderByAscending:@"filmDate"];
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    [comps setDay:1];
+    [comps setMonth:1];
+    [comps setYear:[[[NSBundle mainBundle] objectForInfoDictionaryKey:@"Year"] integerValue]];
+    NSDate* myDate = [[NSCalendar currentCalendar] dateFromComponents:comps];
+    [query whereKey:@"filmDate" greaterThan:myDate];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             filmData=objects;
@@ -165,11 +171,6 @@
         [dateFormatter setDateFormat:@"MM/dd/YY"];
         self.previousDate=[dateFormatter stringFromDate:[film objectForKey: @"filmDate"]];
         
-        UITapGestureRecognizer *gestureRec = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openUrl:)];
-        gestureRec.numberOfTouchesRequired = 1;
-        gestureRec.numberOfTapsRequired = 1;
-        [cell addGestureRecognizer:gestureRec];
-        
         UISwipeGestureRecognizer *gestureSwipeRec = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(editFilm:)];
         gestureSwipeRec.direction = UISwipeGestureRecognizerDirectionLeft;
         [cell addGestureRecognizer:gestureSwipeRec];
@@ -180,16 +181,6 @@
     }
     
     return cell;
-}
-
-- (void)openUrl:(id)sender
-{
-    UISwipeGestureRecognizer *rec = (UISwipeGestureRecognizer *)sender;
-    
-    UITableViewCell *cell = (UITableViewCell*)rec.view;
-    self.objectId=cell.detailTextLabel.accessibilityHint;
-    PFObject *film = [self.filmDictionary objectForKey: self.objectId];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[film objectForKey:@"link"]]];
 }
 
 - (void)editFilm:(id)sender

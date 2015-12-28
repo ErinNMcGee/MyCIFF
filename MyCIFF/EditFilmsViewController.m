@@ -11,7 +11,6 @@
 #import "TodaysFilmsViewController.h"
 
 @interface EditFilmsViewController ()
-@property (nonatomic,strong) NSString* previousIntro;
 
 @end
 
@@ -24,18 +23,12 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.introPicker.delegate = self;
-    self.introPicker.dataSource = self;
-    self.introPicker.hidden = true;
     self.datePicker.hidden=true;
     self.colorPicker.delegate = self;
     self.colorPicker.dataSource = self;
     self.colorPicker.hidden=true;
     self.colorArray= @[@"Blue", @"Brown", @"Green",
                        @"Grey", @"Orange", @"Purple", @"Red", @"Yellow"];
-    self.introArray=@[@"Bill", @"Kevin", @"Marcie",
-                      @"Mike", @"Other", @"Patrick", @"Suzie", @"Walt"];
-                [self loadData];
     [self.datePicker addTarget:self action:@selector(datePickerDateChanged:) forControlEvents:UIControlEventValueChanged];
     
     
@@ -48,25 +41,9 @@
     dateString = [dateFormatter stringFromDate:[self.film objectForKey: @"filmDate"]];
     NSDate *datePickerDate=[dateFormatter dateFromString:dateString];
     [self.datePicker setDate:datePickerDate];
-    self.introLabel.text=[self.film objectForKey: @"intro"];
     self.filmComments.text=[self.film objectForKey: @"comments"];
     self.theaterColor.text=[self.film objectForKey:@"theater"];
     self.filmLength.text=[self.film objectForKey:@"filmLength"];
-}
-
--(void) loadData
-{
-    PFQuery *query = [PFQuery queryWithClassName:@"Intro"];
-    [query orderByAscending:@"name"];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            NSMutableArray *introNames=[NSMutableArray new];
-            for(PFObject * intro in objects){
-                    [introNames addObject:[intro objectForKey: @"name"]];
-                }
-            self.introArray=introNames;
-        }
-    }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -79,28 +56,19 @@
 {
     NSSet *allTouches = [event allTouches];
     for (UITouch *touch in allTouches){
-        if(touch.view.tag == 1){
-            if(self.introPicker.hidden){
-                self.datePicker.hidden = true;
-                self.introPicker.hidden = false;
-                self.colorPicker.hidden = true;
-            }
-        }else if(touch.view.tag == 2){
+        if(touch.view.tag == 2){
             if(self.datePicker.hidden){
                 self.datePicker.hidden = false;
-                self.introPicker.hidden = true;
                 self.colorPicker.hidden = true;
             }
         }else if(touch.view.tag == 3){
             if(self.colorPicker.hidden){
                 self.datePicker.hidden = true;
-                self.introPicker.hidden = true;
                 self.colorPicker.hidden = false;
             }
         }
         else{
             self.datePicker.hidden = true;
-            self.introPicker.hidden = true;
             self.colorPicker.hidden = true;
         }
         
@@ -123,36 +91,6 @@
     NSString *alertString = @"Data Insertion failed";
     if (self.filmTitle.text.length>0)
     {
-        NSString *link =[@"http://www.clevelandfilm.org/films/2015/" stringByAppendingString:self.filmTitle.text];
-        
-        link = [link stringByReplacingOccurrencesOfString:@" "
-                                               withString:@"-"];
-        
-        link = [link stringByReplacingOccurrencesOfString:@"'"
-                                               withString:@""];
-        
-        link = [link stringByReplacingOccurrencesOfString:@":"
-                                               withString:@"-"];
-        
-        link = [link stringByReplacingOccurrencesOfString:@"-//"
-                                               withString:@"://"];
-        
-        link = [link stringByReplacingOccurrencesOfString:@"?"
-                                               withString:@""];
-        
-        link = [link stringByReplacingOccurrencesOfString:@"!"
-                                               withString:@""];
-        
-        link = [link stringByReplacingOccurrencesOfString:@"+"
-                                               withString:@"-"];
-        
-        link = [link stringByReplacingOccurrencesOfString:@"--"
-                                               withString:@"-"];
-
-        
-        if(self.introLabel.text==nil){
-        self.introLabel.text=@"";
-        }
         
         if(self.theaterColor.text==nil){
             self.theaterColor.text=@"";
@@ -179,9 +117,7 @@
         }
         
         self.film[@"title"] = [filmTitle stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-        self.film[@"link"] = link;
         self.film[@"filmDate"] = self.datePicker.date;
-        self.film[@"intro"] = self.introLabel.text;
         self.film[@"comments"] = self.filmComments.text;
         self.film[@"theater"] = self.theaterColor.text;
         self.film[@"filmLength"] = self.filmLength.text;
@@ -210,33 +146,6 @@
             [self presentViewController:allView animated:NO completion:nil];
         }
         
-        if(self.previousIntro){
-            if(![self.introLabel.text isEqualToString:self.previousIntro]){
-                PFQuery *query = [PFQuery queryWithClassName:@"Intro"];
-                __block PFObject *intro;
-                [query whereKey:@"name" equalTo:self.previousIntro];
-                [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-                    if(!error){
-                        for(PFObject *introObj in objects){
-                            intro=introObj;
-                            intro[@"count"]=@([[intro objectForKey:@"count"] intValue]-1);
-                            
-                            [intro saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                                if (succeeded) {
-                                } else {
-                                    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:
-                                                          alertString message:error.description
-                                                                                  delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                                    [alert show];
-                                }
-                            }];
-                        }
-                    
-                    }
-                 }];
-            }
-        }
-        
     }
     else{
         alertString = @"Enter a title and time";
@@ -258,22 +167,11 @@
 
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row   forComponent:(NSInteger)component
 {
-    if(pickerView.tag==1){
-        return [self.introArray objectAtIndex:row];
-    }else if (pickerView.tag==2){
         return [self.colorArray objectAtIndex:row];
-    }
-    return nil;
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row   inComponent:(NSInteger)component{
-    
-    if(pickerView.tag==1){
-        self.previousIntro=self.introLabel.text;
-        self.introLabel.text=[self.introArray objectAtIndex:row];
-    }else if (pickerView.tag==2){
         self.theaterColor.text=[self.colorArray objectAtIndex:row];
-    }
 }
 
 

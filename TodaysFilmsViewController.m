@@ -11,7 +11,6 @@
 
 @interface TodaysFilmsViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *totalFilmCount;
-@property (weak, nonatomic) IBOutlet UITextView *introCountText;
 
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 @property (strong, nonatomic) NSDictionary *filmDictionary;
@@ -47,6 +46,11 @@
     
     self.refreshControl = refresh;
     [self.todaysFilmsList addSubview:self.refreshControl];
+    
+    UISwipeGestureRecognizer *gestureRec = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(openCalendar)];
+    gestureRec.direction=UISwipeGestureRecognizerDirectionDown;
+    
+    [self.view addGestureRecognizer:gestureRec];
 }
 
 - (void)didReceiveMemoryWarning
@@ -68,6 +72,12 @@
 -(void) loadData
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Film"];
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    [comps setDay:1];
+    [comps setMonth:1];
+    [comps setYear:[[[NSBundle mainBundle] objectForInfoDictionaryKey:@"Year"] integerValue]];
+    NSDate* myDate = [[NSCalendar currentCalendar] dateFromComponents:comps];
+    [query whereKey:@"filmDate" greaterThan:myDate];
     [query orderByAscending:@"filmDate"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
@@ -127,27 +137,6 @@
         
     }];
     
-    query = [PFQuery queryWithClassName:@"Intro"];
-    [query orderByDescending:@"count"];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        NSString *introers=@"";
-        if (!error) {
-            for(PFObject * intro in objects){
-                
-                if([introers isEqualToString:@""]){
-                    introers=[NSString stringWithFormat:@"%@ %@ Times\n",[intro objectForKey: @"name"], [intro objectForKey: @"count"]];
-                }else{
-                    introers =[introers stringByAppendingString:[NSString stringWithFormat:@"%@ %@ Times\n",[intro objectForKey: @"name"], [intro objectForKey: @"count"]]];
-                }
-                
-            }
-            
-        }
-        
-        self.introCountText.text=introers;
-        
-    }];
-    
 }
 
 - (IBAction)allFilms:(id)sender {
@@ -155,7 +144,7 @@
     [self presentViewController:allView animated:NO completion:nil];
 }
 
-- (IBAction)openCalendar:(id)sender {
+- (void)openCalendar {
     TodaysCalendarViewController *calendarView = [[TodaysCalendarViewController alloc] initWithNibName:@"TodaysCalendarViewController" bundle:nil];
     [self presentViewController:calendarView animated:NO completion:nil];
 }
@@ -203,10 +192,9 @@
         cell.textLabel.userInteractionEnabled = YES;
         cell.detailTextLabel.accessibilityHint= film.objectId;
         
-        UITapGestureRecognizer *gestureRec = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openUrl:)];
-        gestureRec.numberOfTouchesRequired = 1;
+        UITapGestureRecognizer *gestureRec = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tweet:)];
         gestureRec.numberOfTapsRequired = 1;
-        [cell.textLabel addGestureRecognizer:gestureRec];
+        [cell addGestureRecognizer:gestureRec];
         
         UISwipeGestureRecognizer *gestureSwipeRec = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(editFilm:)];
         gestureSwipeRec.direction = UISwipeGestureRecognizerDirectionLeft;
@@ -220,16 +208,40 @@
     return cell;
 }
 
-- (void)openUrl:(id)sender
+- (void)tweet:(id)sender
 {
-    UIGestureRecognizer *rec = (UIGestureRecognizer *)sender;
+    UITapGestureRecognizer *rec = (UITapGestureRecognizer *)sender;
     
-    id hitLabel = [self.view hitTest:[rec locationInView:self.view] withEvent:UIEventTypeTouches];
+    UITableViewCell *cell = (UITableViewCell*)rec.view;
+    self.objectId=cell.detailTextLabel.accessibilityHint;
     
-    if ([hitLabel isKindOfClass:[UILabel class]]) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:((UILabel *)hitLabel).accessibilityHint]];
+    PFObject *film = [self.filmDictionary objectForKey: self.objectId];
+    
+    if (film){
+        if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]){
+            SLComposeViewController *tweetSheet = [SLComposeViewController
+                                               composeViewControllerForServiceType:SLServiceTypeTwitter];
         
+            NSString *string1 = [@"Film " stringByAppendingString:[@([self.totalFilmCount.text intValue]+1) stringValue]];
+        
+            NSString *tweetString = [NSString stringWithFormat:@"%@ @CIFF %@ #CIFF40", string1, [film objectForKey: @"title"]];
+            [tweetSheet setInitialText: tweetString];
+        
+            tweetSheet.completionHandler = ^(SLComposeViewControllerResult result) {
+                switch(result) {
+                    //  This means the user cancelled without sending the Tweet
+                    case SLComposeViewControllerResultCancelled:
+                        break;
+                    //  This means the user hit 'Send'
+                    case SLComposeViewControllerResultDone:
+                        break;
+                }
+            };
+        
+            [self presentViewController:tweetSheet animated:YES completion:nil];
+        }
     }
+
 }
 
 - (void)editFilm:(id)sender

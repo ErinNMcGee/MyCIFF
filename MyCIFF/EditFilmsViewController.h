@@ -15,8 +15,6 @@
 @property (strong, nonatomic)          NSArray *introArray;
 @property (strong, nonatomic)          NSArray *colorArray;
 @property (weak, nonatomic) IBOutlet UILabel *dateTimeLabel;
-@property (weak, nonatomic) IBOutlet UIPickerView *introPicker;
-@property (weak, nonatomic) IBOutlet UILabel *introLabel;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (weak, nonatomic) IBOutlet UITextView *filmComments;
 @property (weak, nonatomic) IBOutlet UITextField *filmTitle;

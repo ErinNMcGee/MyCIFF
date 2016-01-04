@@ -26,12 +26,6 @@
                     <date key="date" timeIntervalSinceReferenceDate="418663695.58165199">
                         <!--2014-04-08 15:28:15 +0000-->
                     </date>
-                    <date key="minimumDate" timeIntervalSinceReferenceDate="410266800">
-                        <!--2014-01-01 11:00:00 +0000-->
-                    </date>
-                    <date key="maximumDate" timeIntervalSinceReferenceDate="473252400">
-                        <!--2015-12-31 11:00:00 +0000-->
-                    </date>
                 </datePicker>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dce-nw-BMP">
                     <rect key="frame" x="124" y="80" width="200" height="30"/>
@@ -95,6 +89,11 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add A Film" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7po-v4-z21">
+                    <rect key="frame" x="161" y="28" width="82" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>

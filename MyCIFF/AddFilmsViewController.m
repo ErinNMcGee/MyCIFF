@@ -31,6 +31,11 @@
                         @"Grey", @"Orange", @"Purple", @"Red", @"Yellow"];
     [self.datePicker addTarget:self action:@selector(datePickerDateChanged:) forControlEvents:UIControlEventValueChanged];
     
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    [dateFormatter setDateFormat:@"MM/dd/YY hh:mm a"];
+    NSString *dateString = [dateFormatter stringFromDate:[NSDate date]];
+    self.dateTimeLabel.text=dateString;
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -66,6 +71,7 @@
         }
         
         [self.filmTitle resignFirstResponder];
+        [self.filmLength resignFirstResponder];
     }
 }
 - (IBAction)cancelAddFilm:(id)sender {

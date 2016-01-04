@@ -74,6 +74,7 @@
         
         [self.filmTitle resignFirstResponder];
         [self.filmComments resignFirstResponder];
+        [self.filmLength resignFirstResponder];
     }
 }
 - (IBAction)cancelAddFilm:(id)sender {

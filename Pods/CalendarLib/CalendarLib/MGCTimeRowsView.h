@@ -47,4 +47,6 @@
 @property (nonatomic) UIColor *timeColor;				// color used for time marks and lines
 @property (nonatomic) UIColor *currentTimeColor;		// color used for current time mark and line
 
+@property (nonatomic) CGPoint curTimePt;
+
 @end

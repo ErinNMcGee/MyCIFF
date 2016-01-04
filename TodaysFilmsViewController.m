@@ -51,6 +51,11 @@
     gestureRec.direction=UISwipeGestureRecognizerDirectionDown;
     
     [self.view addGestureRecognizer:gestureRec];
+    
+    gestureRec = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(allFilms)];
+    gestureRec.direction=UISwipeGestureRecognizerDirectionLeft;
+    
+    [self.view addGestureRecognizer:gestureRec];
 }
 
 - (void)didReceiveMemoryWarning
@@ -105,8 +110,8 @@
                 if([filmDate isEqualToString:currentDate] && filmTime >=currentTime){
                     [todaysFilms addObject:film];
                     UILocalNotification *notification = [[UILocalNotification alloc]init];
-                    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-                    NSDateComponents *components = [gregorian components:NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit fromDate:[film objectForKey: @"filmDate"]];
+                    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+                    NSDateComponents *components = [gregorian components:NSCalendarUnitYear | NSCalendarUnitMonth |  NSCalendarUnitDay fromDate:[film objectForKey: @"filmDate"]];
                     
                     [components setMinute:-30];
                     
@@ -139,7 +144,7 @@
     
 }
 
-- (IBAction)allFilms:(id)sender {
+- (void)allFilms {
         AllFilmsViewController *allView = [[AllFilmsViewController alloc] initWithNibName:@"AllFilmsViewController" bundle:nil];
     [self presentViewController:allView animated:NO completion:nil];
 }

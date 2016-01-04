@@ -13,8 +13,10 @@
 #import "NSCalendar+MGCAdditions.h"
 
 @interface TodaysCalendarViewController()
+
 @property (strong, nonatomic) NSArray *todaysFilmData;
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
+
 @end
 
 @implementation TodaysCalendarViewController

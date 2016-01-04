@@ -46,6 +46,16 @@
     
     self.refreshControl = refresh;
     [self.filmList addSubview:self.refreshControl];
+    
+    UISwipeGestureRecognizer *gestureRec = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(todaysFilms)];
+    gestureRec.direction=UISwipeGestureRecognizerDirectionRight;
+    
+    [self.view addGestureRecognizer:gestureRec];
+    
+    gestureRec = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(addAFilm)];
+    gestureRec.direction=UISwipeGestureRecognizerDirectionDown;
+    
+    [self.view addGestureRecognizer:gestureRec];
 }
 
 - (void)didReceiveMemoryWarning
@@ -89,7 +99,7 @@
                 if (film){
                     UILocalNotification *notification = [[UILocalNotification alloc]init];
                     NSDate *filmDate=[film objectForKey: @"filmDate"];
-                    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+                    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
                     NSDateComponents *offsetComponents = [[NSDateComponents alloc] init];
                     [offsetComponents setMinute:-30]; // note that I'm setting it to -1
                     NSDate *fireDate = [gregorian dateByAddingComponents:offsetComponents toDate:filmDate options:0];
@@ -111,12 +121,12 @@
         
     }];
 }
-- (IBAction)todaysFilms:(id)sender {
+- (void)todaysFilms{
     TodaysFilmsViewController *todayView = [[TodaysFilmsViewController alloc] initWithNibName:@"TodaysFilmsViewController" bundle:nil];
     [self presentViewController:todayView animated:NO completion:nil];
 }
 
-- (IBAction)addAFilm:(id)sender {
+- (void)addAFilm {
     AddFilmsViewController *addView = [[AddFilmsViewController alloc] initWithNibName:@"AddFilmsViewController" bundle:nil];
     [self presentViewController:addView animated:NO completion:nil];
 }

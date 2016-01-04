@@ -107,13 +107,17 @@
 		time = roundf(time / (self.rounding * 60)) * (self.rounding * 60);
 	}
 	
-	int hour = (int)(time / 3600) % 24;
+	int hour = (int)(time / 3600) % 12;
 	int minutes = ((int)time % 3600) / 60;
 
 	if (minutesOnly) {
 		return [NSString stringWithFormat:@":%02d", minutes];
 	}
-	return [NSString stringWithFormat:@"%02d:%02d", hour, minutes];
+    if(hour == 0){
+        return [NSString stringWithFormat:@"%02d:%02d", 12, minutes];
+    }else{
+        return [NSString stringWithFormat:@"%02d:%02d", hour, minutes];
+    }
 }
 
 - (void)drawRect:(CGRect)rect
@@ -137,6 +141,7 @@
 		[s drawAtPoint:pt withAttributes:@{ NSFontAttributeName:self.font, NSForegroundColorAttributeName:self.currentTimeColor }];
 		CGRect lineRect = CGRectMake(self.timeColumnWidth - kSpacing, y, rect.size.width - self.timeColumnWidth + kSpacing, 1);
 		UIRectFill(lineRect);
+        self.curTimePt = pt;
 	}
 	
 	// calculate rect for the small time mark
@@ -153,7 +158,11 @@
 	// draw the hour marks
 	for (int i = 0; i <= 24; i++) {
 		
-		s = [NSString stringWithFormat:@"%02d:00", i % 24];
+        if(i % 12 == 0){
+            s = [NSString stringWithFormat:@"%02d:00", 12];
+        }else{
+            s = [NSString stringWithFormat:@"%02d:00", i % 12];
+        }
 		size = [s sizeWithAttributes:@{ NSFontAttributeName:self.font }];
 		y = i * self.hourSlotHeight + self.insetsHeight;
 		pt = CGPointMake(self.timeColumnWidth - (size.width + kSpacing), y - size.height / 2.);

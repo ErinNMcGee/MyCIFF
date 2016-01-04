@@ -124,7 +124,7 @@
         self.film[@"filmLength"] = self.filmLength.text;
         EKEventStore *store = [[EKEventStore alloc] init];
         EKEvent* event = [store eventWithIdentifier:self.film[@"eventID"]];
-        event.title = [filmTitle stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];;
+        event.title = [NSString stringWithFormat:@"CIFF: %@",[filmTitle stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
         event.startDate = self.datePicker.date;
         event.endDate = [self.datePicker.date dateByAddingTimeInterval: (self.filmLength.text.intValue *60)];
         [event setCalendar:[store defaultCalendarForNewEvents]];

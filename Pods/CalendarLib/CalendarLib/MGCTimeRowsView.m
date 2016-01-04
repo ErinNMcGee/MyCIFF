@@ -111,12 +111,20 @@
 	int minutes = ((int)time % 3600) / 60;
 
 	if (minutesOnly) {
-		return [NSString stringWithFormat:@":%02d", minutes];
+		return [NSString stringWithFormat:@":%d", minutes];
 	}
-    if(hour == 0){
-        return [NSString stringWithFormat:@"%02d:%02d", 12, minutes];
+    if(((int)(time / 3600) % 24) < 12){
+        if(hour == 0){
+            return [NSString stringWithFormat:@"%d:%02dAM", 12, minutes];
+        }else{
+            return [NSString stringWithFormat:@"%d:%02dAM", hour, minutes];
+        }
     }else{
-        return [NSString stringWithFormat:@"%02d:%02d", hour, minutes];
+        if(hour == 0){
+            return [NSString stringWithFormat:@"%d:%02dPM", 12, minutes];
+        }else{
+            return [NSString stringWithFormat:@"%d:%02dPM", hour, minutes];
+        }
     }
 }
 
@@ -158,10 +166,19 @@
 	// draw the hour marks
 	for (int i = 0; i <= 24; i++) {
 		
-        if(i % 12 == 0){
-            s = [NSString stringWithFormat:@"%02d:00", 12];
+        if(((int)(i % 24) < 12)){
+            if(i % 12 == 0){
+                s = [NSString stringWithFormat:@"%d:00AM", 12];
+            }else{
+                s = [NSString stringWithFormat:@"%d:00AM", i % 12];
+            }
         }else{
-            s = [NSString stringWithFormat:@"%02d:00", i % 12];
+            if(i % 12 == 0){
+                s = [NSString stringWithFormat:@"%d:00PM", 12];
+            }else{
+                s = [NSString stringWithFormat:@"%d:00PM", i % 12];
+            }
+        
         }
 		size = [s sizeWithAttributes:@{ NSFontAttributeName:self.font }];
 		y = i * self.hourSlotHeight + self.insetsHeight;

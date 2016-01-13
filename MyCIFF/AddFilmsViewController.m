@@ -144,6 +144,7 @@
         event.title = [NSString stringWithFormat:@"CIFF: %@",[filmTitle stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
         event.startDate = self.datePicker.date;
         event.endDate = [self.datePicker.date dateByAddingTimeInterval: (self.filmLength.text.intValue *60)];
+        event.location = [NSString stringWithFormat:@"%@ Theater",self.theaterColor.text];
         [event setCalendar:[store defaultCalendarForNewEvents]];
         NSError *err = nil;
         [store saveEvent:event span:EKSpanThisEvent commit:YES error:&err];

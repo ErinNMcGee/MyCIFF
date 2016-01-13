@@ -123,13 +123,22 @@
         self.film[@"theater"] = self.theaterColor.text;
         self.film[@"filmLength"] = self.filmLength.text;
         EKEventStore *store = [[EKEventStore alloc] init];
-        EKEvent* event = [store eventWithIdentifier:self.film[@"eventID"]];
+        EKEvent* eventToRemove = [store eventWithIdentifier:self.film[@"eventID"]];
+        if (eventToRemove != nil) {
+            NSError* error = nil;
+            [store removeEvent:eventToRemove span:EKSpanThisEvent error:&error];
+        }
+        EKEvent* event = [EKEvent eventWithEventStore:store];
+
         event.title = [NSString stringWithFormat:@"CIFF: %@",[filmTitle stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
         event.startDate = self.datePicker.date;
         event.endDate = [self.datePicker.date dateByAddingTimeInterval: (self.filmLength.text.intValue *60)];
+        event.location = [NSString stringWithFormat:@"%@ Theater",self.theaterColor.text];
         [event setCalendar:[store defaultCalendarForNewEvents]];
         NSError *err = nil;
         [store saveEvent:event span:EKSpanThisEvent commit:YES error:&err];
+        NSString* str = [[NSString alloc] initWithFormat:@"%@", event.eventIdentifier];
+        self.film[@"eventID"] = str;
         [self.film saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (succeeded) {
             } else {

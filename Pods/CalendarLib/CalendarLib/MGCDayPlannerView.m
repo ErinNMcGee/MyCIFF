@@ -515,10 +515,10 @@ static const CGFloat kMaxHourSlotHeight = 150.;
 	if (maxScrollable != nil && [firstVisible compare:maxScrollable] == NSOrderedDescending) {
 		firstVisible = maxScrollable;
 	}
+    
 	
 	NSDate *dayStart = [self.calendar mgc_startOfDayForDate:firstVisible];
 	NSTimeInterval ti = [date timeIntervalSinceDate:dayStart];
-	
 	CGFloat y = ti / 3600. * self.hourSlotHeight + self.eventsViewInnerMargin;
 	y = fminf(y, self.timedEventsView.contentSize.height - self.timedEventsView.bounds.size.height);
 	CGFloat x = [self xOffsetFromDayOffset:[self dayOffsetFromDate:[NSDate date]]];

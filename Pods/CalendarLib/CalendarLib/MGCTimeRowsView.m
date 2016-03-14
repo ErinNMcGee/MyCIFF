@@ -137,10 +137,10 @@
 	
 	// calculate rect for current time mark
 	NSTimeInterval currentTime = -[[self.calendar mgc_startOfDayForDate:[NSDate date]] timeIntervalSinceNow];
-	NSString *s = [self stringForTime:currentTime rounded:NO minutesOnly:NO];
+	NSString *s = [self stringForTime:(currentTime+3600) rounded:NO minutesOnly:NO];
 	CGSize size = [s sizeWithAttributes:@{ NSFontAttributeName:self.font }];
 	
-	CGFloat y = [self yOffsetForTime:currentTime rounded:NO];
+	CGFloat y = [self yOffsetForTime:(currentTime+3600) rounded:NO];
 	CGPoint pt = CGPointMake(self.timeColumnWidth - (size.width + kSpacing), y - size.height / 2.);
 	CGRect rectCurTime = CGRectMake(pt.x, pt.y, size.width, size.height);
 	
